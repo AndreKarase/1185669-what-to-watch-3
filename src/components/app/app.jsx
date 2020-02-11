@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Main from '../main/main.jsx';
 
+const headerClickHandler = () => {};
+
 const App = (props) => {
   const {title, genre, releaseDate, titles} = props;
 
@@ -11,6 +13,7 @@ const App = (props) => {
       genre = {genre}
       releaseDate = {releaseDate}
       titles = {titles}
+      onHeaderClick = {headerClickHandler}
     />
   );
 };
