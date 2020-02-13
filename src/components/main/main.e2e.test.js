@@ -25,7 +25,7 @@ it(`Should header be clicked`, () => {
   );
 
   const header = main.find(`header`);
-  header.props().onClick();
+  header.simulate(`click`);
 
   expect(onHeaderClick.mock.calls.length).toBe(1);
 });
