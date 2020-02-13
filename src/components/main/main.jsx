@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Main = (props) => {
-  const {title, genre, releaseDate, titles} = props;
+  const {title, genre, releaseDate, titles, onHeaderClick} = props;
 
   return (
     <React.Fragment>
@@ -13,7 +13,7 @@ const Main = (props) => {
 
         <h1 className="visually-hidden">WTW</h1>
 
-        <header className="page-header movie-card__head">
+        <header className="page-header movie-card__head" onClick={onHeaderClick}>
           <div className="logo">
             <a className="logo__link">
               <span className="logo__letter logo__letter--1">W</span>
@@ -140,7 +140,8 @@ Main.propTypes = {
   title: PropTypes.string.isRequired,
   genre: PropTypes.string.isRequired,
   releaseDate: PropTypes.string.isRequired,
-  titles: PropTypes.arrayOf(PropTypes.string.isRequired)
+  titles: PropTypes.arrayOf(PropTypes.string.isRequired),
+  onHeaderClick: PropTypes.func.isRequired
 };
 
 export default Main;
