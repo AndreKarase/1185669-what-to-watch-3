@@ -17,10 +17,10 @@ class MoviesList extends PureComponent {
         {movies.map((movie) => (<MovieCard
           key = {movie.title}
           movie = {movie}
-          onMouseOver = {(hoverMovie) => {
+          onMouseEnter = {(hoverMovie) => {
             this.setState({movie: hoverMovie});
           }}
-          onMouseOut = {() => {
+          onMouseLeave = {() => {
             this.setState({movie: null});
           }}
         />))}

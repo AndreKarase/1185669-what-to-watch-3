@@ -11,21 +11,20 @@ const movie = {
 };
 
 it(`When hover is over movie-card, should enter movie-info to the handler`, () => {
-  const onMouseOver = jest.fn();
+  const onMouseEnter = jest.fn();
 
   const movieCard = shallow(
       <MovieCard
         movie={movie}
-        onMouseOver={onMouseOver}
-        onMouseOut={() => {}}
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={() => {}}
       />
   );
 
-  // const movieCardElement = movieCard.find(`.small-movie-card`);
-  movieCard.simulate(`mouseover`);
+  movieCard.simulate(`mouseenter`);
 
-  expect(onMouseOver).toHaveBeenCalledTimes(1);
-  expect(onMouseOver.mock.calls[0][0]).toMatchObject(movie);
+  expect(onMouseEnter).toHaveBeenCalledTimes(1);
+  expect(onMouseEnter.mock.calls[0][0]).toMatchObject(movie);
 });
 
 

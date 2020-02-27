@@ -260,8 +260,8 @@ Array [
       >
         <article
           className="small-movie-card catalog__movies-card"
-          onMouseOut={[Function]}
-          onMouseOver={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
         >
           <div
             className="small-movie-card__image"
@@ -272,22 +272,22 @@ Array [
               src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
               width="280"
             />
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
+            <h3
+              className="small-movie-card__title"
             >
-              The Grand Budapest Hotel
-            </a>
-          </h3>
+              <a
+                className="small-movie-card__link"
+                href="movie-page.html"
+              >
+                The Grand Budapest Hotel
+              </a>
+            </h3>
+          </div>
         </article>
         <article
           className="small-movie-card catalog__movies-card"
-          onMouseOut={[Function]}
-          onMouseOver={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
         >
           <div
             className="small-movie-card__image"
@@ -298,22 +298,22 @@ Array [
               src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
               width="280"
             />
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
+            <h3
+              className="small-movie-card__title"
             >
-              Fantastic Beasts: The Crimes of Grindelwald
-            </a>
-          </h3>
+              <a
+                className="small-movie-card__link"
+                href="movie-page.html"
+              >
+                Fantastic Beasts: The Crimes of Grindelwald
+              </a>
+            </h3>
+          </div>
         </article>
         <article
           className="small-movie-card catalog__movies-card"
-          onMouseOut={[Function]}
-          onMouseOver={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
         >
           <div
             className="small-movie-card__image"
@@ -324,17 +324,17 @@ Array [
               src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
               width="280"
             />
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
+            <h3
+              className="small-movie-card__title"
             >
-              Bohemian Rhapsody
-            </a>
-          </h3>
+              <a
+                className="small-movie-card__link"
+                href="movie-page.html"
+              >
+                Bohemian Rhapsody
+              </a>
+            </h3>
+          </div>
         </article>
       </div>
       <div
