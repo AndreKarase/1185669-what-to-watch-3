@@ -7,7 +7,7 @@ class MovieCard extends PureComponent {
     super(props);
 
     this.state = {
-      player: false
+      hasPlayer: false
     };
   }
 
@@ -15,28 +15,32 @@ class MovieCard extends PureComponent {
     const {onMouseEnter, onMouseLeave, movie} = this.props;
     const {title, poster, preview} = movie;
 
+    const handleMouseEnter = () => {
+      this._timeout = setTimeout(() => {
+        this.setState({
+          hasPlayer: true
+        });
+      }, 1000);
+
+      onMouseEnter(movie);
+    };
+
+    const handleMouseLeave = () => {
+      clearTimeout(this._timeout);
+      this.setState({
+        hasPlayer: false
+      });
+      onMouseLeave();
+    };
+
     return (
       <article className="small-movie-card catalog__movies-card"
-        onMouseEnter={() => {
-          this._timeout = setTimeout(() => {
-            this.setState({
-              player: true
-            });
-          }, 1000);
-
-          onMouseEnter(movie);
-        }}
-        onMouseLeave={() => {
-          clearTimeout(this._timeout);
-          this.setState({
-            player: false
-          });
-          onMouseLeave();
-        }}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
       >
 
         <div className="small-movie-card__image">
-          {this.state.player ?
+          {this.state.hasPlayer ?
             <VideoPlayer
               src={preview}
               poster={poster}
