@@ -16,10 +16,8 @@ export default class VideoPlayer extends PureComponent {
 
     if (isPlaying) {
       video.play();
-    }
-
-    if (isPlaying) {
-      video.play();
+    } else {
+      video.pause();
     }
   }
 
