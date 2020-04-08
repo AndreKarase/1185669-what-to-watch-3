@@ -1,5 +1,6 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
 import MovieCard from '../movie-card/movie-card.jsx';
 
 class MoviesList extends PureComponent {
@@ -33,4 +34,9 @@ MoviesList.propTypes = {
   movies: PropTypes.array.isRequired
 };
 
-export default MoviesList;
+const mapStateToProps = (state) => ({
+  movies: state.movies
+});
+
+export {MoviesList};
+export default connect(mapStateToProps)(MoviesList);

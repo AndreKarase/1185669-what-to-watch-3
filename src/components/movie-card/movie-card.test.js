@@ -4,15 +4,16 @@ import MovieCard from './movie-card.jsx';
 
 const movie = {
   title: `Fantastic Beasts: The Crimes of Grindelwald`,
-  poster: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`
+  poster: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
+  preview: ``
 };
 
 it(`Should render MovieCard`, () => {
   const tree = renderer.create(
       <MovieCard
         movie = {movie}
-        onMouseOver = {() => {}}
-        onMouseOut ={() => {}}
+        onMouseEnter = {() => {}}
+        onMouseLeave ={() => {}}
       />
   ).toJSON();
 

@@ -7,7 +7,8 @@ configure({adapter: new Adapter()});
 
 const movie = {
   title: `Fantastic Beasts: The Crimes of Grindelwald`,
-  poster: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`
+  poster: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
+  preview: ``
 };
 
 it(`When hover is over movie-card, should enter movie-info to the handler`, () => {
