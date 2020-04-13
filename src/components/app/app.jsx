@@ -1,21 +1,66 @@
-import React from 'react';
+import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import Main from '../main/main.jsx';
+import MovieDetails from '../movie-details/movie-details.jsx';
+import movies from '../../mocks/films.js';
 
-const headerClickHandler = () => {};
+class App extends PureComponent {
+  constructor(props) {
+    super(props);
 
-const App = (props) => {
-  const {title, genre, releaseDate} = props;
+    this.state = {
+      screen: `main`,
+      index: 0
+    };
+  }
 
-  return (
-    <Main
-      title = {title}
-      genre = {genre}
-      releaseDate = {releaseDate}
-      onHeaderClick = {headerClickHandler}
-    />
-  );
-};
+  _renderApp() {
+    const {title, genre, releaseDate} = this.props;
+    const {screen, index} = this.state;
+
+    switch (screen) {
+      case `main`:
+        return (
+          <Main
+            title = {title}
+            genre = {genre}
+            releaseDate = {releaseDate}
+            onHeaderClick = {(i) => {
+              this.setState({
+                screen: `details`,
+                index: i
+              });
+            }}
+          />
+        );
+
+      case `details`:
+        return (
+          <MovieDetails
+            movie = {movies[index]}
+          />
+        );
+    }
+
+    return null;
+  }
+
+  render() {
+    return (
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/">
+            {this._renderApp()}
+          </Route>
+          <Route exact path="/dev-movie-details">
+            <MovieDetails />
+          </Route>
+        </Switch>
+      </BrowserRouter>
+    );
+  }
+}
 
 App.propTypes = {
   title: PropTypes.string.isRequired,

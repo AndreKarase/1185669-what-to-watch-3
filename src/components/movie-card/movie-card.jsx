@@ -12,8 +12,8 @@ class MovieCard extends PureComponent {
   }
 
   render() {
-    const {onMouseEnter, onMouseLeave, movie} = this.props;
-    const {title, poster, preview} = movie;
+    const {onMouseEnter, onMouseLeave, onHeaderClick, movie} = this.props;
+    const {title, previewImage, preview} = movie;
 
     const handleMouseEnter = () => {
       this._timeout = setTimeout(() => {
@@ -37,20 +37,21 @@ class MovieCard extends PureComponent {
       <article className="small-movie-card catalog__movies-card"
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
+        onClick={onHeaderClick}
       >
 
         <div className="small-movie-card__image">
           {this.state.hasPlayer ?
             <VideoPlayer
               src={preview}
-              poster={poster}
+              previewImage={previewImage}
               isPlaying={true}
               muted={true}
             /> :
             <Fragment>
-              <img src={poster} alt={title} width="280" height="175" />
+              <img src={previewImage} alt={title} width="280" height="175"/>
               <h3 className="small-movie-card__title">
-                <a className="small-movie-card__link" href="movie-page.html">{title}</a>
+                <a className="small-movie-card__link">{title}</a>
               </h3>
             </Fragment>
           }
@@ -63,9 +64,10 @@ class MovieCard extends PureComponent {
 MovieCard.propTypes = {
   onMouseEnter: PropTypes.func.isRequired,
   onMouseLeave: PropTypes.func.isRequired,
+  onHeaderClick: PropTypes.func.isRequired,
   movie: PropTypes.shape({
     title: PropTypes.string.isRequired,
-    poster: PropTypes.string.isRequired,
+    previewImage: PropTypes.string.isRequired,
     preview: PropTypes.string.isRequired
   }).isRequired
 };

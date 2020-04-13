@@ -6,9 +6,18 @@ import MovieCard from './movie-card.jsx';
 configure({adapter: new Adapter()});
 
 const movie = {
-  title: `Fantastic Beasts: The Crimes of Grindelwald`,
-  poster: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
-  preview: ``
+  title: ``,
+  previewImage: ``,
+  posterImage: ``,
+  backgroundImage: ``,
+  genre: ``,
+  releaseDate: 1998,
+  preview: ``,
+  description: ``,
+  rating: 10,
+  scoresCount: 1,
+  director: ``,
+  starring: [``, ``, ``],
 };
 
 it(`When hover is over movie-card, should enter movie-info to the handler`, () => {
@@ -19,6 +28,7 @@ it(`When hover is over movie-card, should enter movie-info to the handler`, () =
         movie={movie}
         onMouseEnter={onMouseEnter}
         onMouseLeave={() => {}}
+        onHeaderClick={() => {}}
       />
   );
 
@@ -28,4 +38,20 @@ it(`When hover is over movie-card, should enter movie-info to the handler`, () =
   expect(onMouseEnter.mock.calls[0][0]).toMatchObject(movie);
 });
 
+it(`Should header be clicked`, () => {
+  const onHeaderClick = jest.fn();
+
+  const movieCard = shallow(
+      <MovieCard
+        movie={movie}
+        onMouseEnter={() => {}}
+        onMouseLeave={() => {}}
+        onHeaderClick={onHeaderClick}
+      />
+  );
+
+  movieCard.simulate(`click`);
+
+  expect(onHeaderClick).toHaveBeenCalledTimes(1);
+});
 

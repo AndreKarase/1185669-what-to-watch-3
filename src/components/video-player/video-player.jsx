@@ -21,6 +21,13 @@ export default class VideoPlayer extends PureComponent {
     }
   }
 
+  componentWillUnmount() {
+    const video = this._videoRef.current;
+
+    video.src = ``;
+    video = null;
+  }
+
   render() {
     const {muted, poster} = this.props;
 

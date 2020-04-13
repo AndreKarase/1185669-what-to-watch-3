@@ -11,13 +11,16 @@ class MoviesList extends PureComponent {
   }
 
   render() {
-    const {movies} = this.props;
+    const {movies, onHeaderClick} = this.props;
 
     return (
       <div className="catalog__movies-list">
-        {movies.map((movie) => (<MovieCard
+        {movies.map((movie, i) => (<MovieCard
           key = {movie.title}
           movie = {movie}
+          onHeaderClick = {() => {
+            onHeaderClick(i);
+          }}
           onMouseEnter = {(hoverMovie) => {
             this.setState({movie: hoverMovie});
           }}
@@ -31,7 +34,8 @@ class MoviesList extends PureComponent {
 }
 
 MoviesList.propTypes = {
-  movies: PropTypes.array.isRequired
+  movies: PropTypes.array.isRequired,
+  onHeaderClick: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({

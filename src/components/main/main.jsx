@@ -15,7 +15,7 @@ const Main = (props) => {
 
         <h1 className="visually-hidden">WTW</h1>
 
-        <header className="page-header movie-card__head" onClick={onHeaderClick}>
+        <header className="page-header movie-card__head">
           <div className="logo">
             <a className="logo__link">
               <span className="logo__letter logo__letter--1">W</span>
@@ -69,7 +69,9 @@ const Main = (props) => {
 
           <GenreList/>
 
-          <MoviesList/>
+          <MoviesList
+            onHeaderClick = {onHeaderClick}
+          />
 
           <div className="catalog__more">
             <button className="catalog__button" type="button">Show more</button>

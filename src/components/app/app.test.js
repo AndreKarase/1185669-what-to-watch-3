@@ -8,17 +8,44 @@ const mockStore = configureStore([]);
 
 const movies = [
   {
-    title: `The Grand Budapest Hotel`,
-    poster: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
-    preview: ``
+    title: ``,
+    previewImage: ``,
+    posterImage: ``,
+    backgroundImage: ``,
+    genre: `Drama`,
+    releaseDate: 1998,
+    preview: ``,
+    description: ``,
+    rating: 10,
+    scoresCount: 1,
+    director: ``,
+    starring: [``, ``, ``],
   }, {
-    title: `Fantastic Beasts: The Crimes of Grindelwald`,
-    poster: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
-    preview: ``
+    title: ``,
+    previewImage: ``,
+    posterImage: ``,
+    backgroundImage: ``,
+    genre: ``,
+    releaseDate: 1998,
+    preview: ``,
+    description: ``,
+    rating: 10,
+    scoresCount: 1,
+    director: ``,
+    starring: [``, ``, ``],
   }, {
-    title: `Bohemian Rhapsody`,
-    poster: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
-    preview: ``
+    title: ``,
+    previewImage: ``,
+    posterImage: ``,
+    backgroundImage: ``,
+    genre: ``,
+    releaseDate: 1998,
+    preview: ``,
+    description: ``,
+    rating: 10,
+    scoresCount: 1,
+    director: ``,
+    starring: [``, ``, ``],
   }
 ];
 

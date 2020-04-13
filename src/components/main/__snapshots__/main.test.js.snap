@@ -20,7 +20,6 @@ Array [
     </h1>
     <header
       className="page-header movie-card__head"
-      onClick={[Function]}
     >
       <div
         className="logo"
@@ -172,7 +171,31 @@ Array [
             className="catalog__genres-link"
             href="#"
             onClick={[Function]}
-          />
+          >
+            Drama
+          </a>
+        </li>
+        <li
+          className="catalog__genres-item catalog__genres-item"
+        >
+          <a
+            className="catalog__genres-link"
+            href="#"
+            onClick={[Function]}
+          >
+            Sci-Fi
+          </a>
+        </li>
+        <li
+          className="catalog__genres-item catalog__genres-item"
+        >
+          <a
+            className="catalog__genres-link"
+            href="#"
+            onClick={[Function]}
+          >
+            Romance
+          </a>
         </li>
       </ul>
       <div
@@ -180,6 +203,7 @@ Array [
       >
         <article
           className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
@@ -197,7 +221,6 @@ Array [
             >
               <a
                 className="small-movie-card__link"
-                href="movie-page.html"
               >
                 The Grand Budapest Hotel
               </a>
@@ -206,6 +229,7 @@ Array [
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
@@ -223,7 +247,6 @@ Array [
             >
               <a
                 className="small-movie-card__link"
-                href="movie-page.html"
               >
                 Fantastic Beasts: The Crimes of Grindelwald
               </a>
@@ -232,6 +255,7 @@ Array [
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
@@ -249,7 +273,6 @@ Array [
             >
               <a
                 className="small-movie-card__link"
-                href="movie-page.html"
               >
                 Bohemian Rhapsody
               </a>
