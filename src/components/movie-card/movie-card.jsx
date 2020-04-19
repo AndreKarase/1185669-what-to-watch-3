@@ -1,5 +1,7 @@
 import React, {PureComponent, Fragment} from 'react';
 import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
+import {ActionCreator} from '../../reducer.js';
 import VideoPlayer from '../video-player/video-player.jsx';
 
 class MovieCard extends PureComponent {
@@ -12,7 +14,7 @@ class MovieCard extends PureComponent {
   }
 
   render() {
-    const {onMouseEnter, onMouseLeave, onHeaderClick, movie} = this.props;
+    const {onMouseEnter, onMouseLeave, movie, onMovieClick} = this.props;
     const {title, previewImage, preview} = movie;
 
     const handleMouseEnter = () => {
@@ -37,7 +39,7 @@ class MovieCard extends PureComponent {
       <article className="small-movie-card catalog__movies-card"
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        onClick={onHeaderClick}
+        onClick={() => onMovieClick(movie)}
       >
 
         <div className="small-movie-card__image">
@@ -64,7 +66,7 @@ class MovieCard extends PureComponent {
 MovieCard.propTypes = {
   onMouseEnter: PropTypes.func.isRequired,
   onMouseLeave: PropTypes.func.isRequired,
-  onHeaderClick: PropTypes.func.isRequired,
+  onMovieClick: PropTypes.func.isRequired,
   movie: PropTypes.shape({
     title: PropTypes.string.isRequired,
     previewImage: PropTypes.string.isRequired,
@@ -72,4 +74,12 @@ MovieCard.propTypes = {
   }).isRequired
 };
 
-export default MovieCard;
+const mapDispatchToProps = (dispatch) => ({
+  onMovieClick(movie) {
+    dispatch(ActionCreator.changeActiveMovie(movie));
+    dispatch(ActionCreator.getMovies(movie.genre));
+  }
+});
+
+export {MovieCard};
+export default connect(null, mapDispatchToProps)(MovieCard);

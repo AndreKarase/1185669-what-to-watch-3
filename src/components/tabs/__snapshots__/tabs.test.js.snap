@@ -1,0 +1,94 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should render Tabs 1`] = `
+<div
+  className="movie-card__desc"
+>
+  <nav
+    className="movie-nav movie-card__nav"
+  >
+    <ul
+      className="movie-nav__list"
+    >
+      <li
+        className="movie-nav__item movie-nav__item--active"
+        onClick={[Function]}
+      >
+        <a
+          className="movie-nav__link"
+          href="#"
+        >
+          Overview
+        </a>
+      </li>
+      <li
+        className="movie-nav__item "
+        onClick={[Function]}
+      >
+        <a
+          className="movie-nav__link"
+          href="#"
+        >
+          Details
+        </a>
+      </li>
+      <li
+        className="movie-nav__item "
+        onClick={[Function]}
+      >
+        <a
+          className="movie-nav__link"
+          href="#"
+        >
+          Reviews
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <div
+    className="movie-rating"
+  >
+    <div
+      className="movie-rating__score"
+    >
+      10
+    </div>
+    <p
+      className="movie-rating__meta"
+    >
+      <span
+        className="movie-rating__level"
+      >
+        Awesome
+      </span>
+      <span
+        className="movie-rating__count"
+      >
+        1
+         ratings
+      </span>
+    </p>
+  </div>
+  <div
+    className="movie-card__text"
+  >
+    
+    <p
+      className="movie-card__director"
+    >
+      <strong>
+        Director: 
+        
+      </strong>
+    </p>
+    <p
+      className="movie-card__starring"
+    >
+      <strong>
+        Starring: 
+        , , 
+      </strong>
+    </p>
+  </div>
+</div>
+`;

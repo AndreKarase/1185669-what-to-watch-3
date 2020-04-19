@@ -4,7 +4,7 @@ import MoviesList from '../movies-list/movies-list.jsx';
 import GenreList from '../genre-list/genre-list.jsx';
 
 const Main = (props) => {
-  const {title, genre, releaseDate, onHeaderClick} = props;
+  const {title, genre, releaseDate} = props;
 
   return (
     <React.Fragment>
@@ -69,9 +69,7 @@ const Main = (props) => {
 
           <GenreList/>
 
-          <MoviesList
-            onHeaderClick = {onHeaderClick}
-          />
+          <MoviesList/>
 
           <div className="catalog__more">
             <button className="catalog__button" type="button">Show more</button>
@@ -99,8 +97,7 @@ const Main = (props) => {
 Main.propTypes = {
   title: PropTypes.string.isRequired,
   genre: PropTypes.string.isRequired,
-  releaseDate: PropTypes.string.isRequired,
-  onHeaderClick: PropTypes.func.isRequired
+  releaseDate: PropTypes.string.isRequired
 };
 
 export default Main;

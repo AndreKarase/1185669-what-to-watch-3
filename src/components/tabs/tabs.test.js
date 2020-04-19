@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import {MovieCard} from './movie-card.jsx';
+import Tabs from './tabs.jsx';
 
 const movie = {
   title: ``,
@@ -17,13 +17,10 @@ const movie = {
   starring: [``, ``, ``],
 };
 
-it(`Should render MovieCard`, () => {
+it(`Should render Tabs`, () => {
   const tree = renderer.create(
-      <MovieCard
+      <Tabs
         movie = {movie}
-        onMouseEnter = {() => {}}
-        onMouseLeave ={() => {}}
-        onHeaderClick = {() => {}}
       />
   ).toJSON();
 

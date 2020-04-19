@@ -1,19 +1,17 @@
 import moviesAll from './mocks/films.js';
-import {extend} from './utils.js';
+import {extend, getMoviesByGenre} from './utils.js';
 
 const initialState = {
   activeGenre: `All genres`,
+  activeMovie: null,
   movies: moviesAll,
   moviesAll
 };
 
 const ActionType = {
   CHANGE_ACTIVE_GENRE: `CHANGE_ACTIVE_GENRE`,
+  CHANGE_ACTIVE_MOVIE: `CHANGE_ACTIVE_MOVIE`,
   GET_MOVIES: `GET_MOVIES`
-};
-
-const getMoviesByGenre = (movies, genre) => {
-  return genre === `All genres` ? movies : movies.filter((movie) => movie.genre === genre);
 };
 
 const ActionCreator = {
@@ -22,8 +20,14 @@ const ActionCreator = {
     payload: genre
   }),
 
-  getMovies: () => ({
-    type: ActionType.GET_MOVIES
+  changeActiveMovie: (movie) => ({
+    type: ActionType.CHANGE_ACTIVE_MOVIE,
+    payload: movie
+  }),
+
+  getMovies: (genre) => ({
+    type: ActionType.GET_MOVIES,
+    payload: genre
   })
 };
 
@@ -32,9 +36,12 @@ const reducer = (state = initialState, action) => {
     case ActionType.CHANGE_ACTIVE_GENRE:
       return extend(state, {activeGenre: action.payload});
 
+    case ActionType.CHANGE_ACTIVE_MOVIE:
+      return extend(state, {activeMovie: action.payload});
+
     case ActionType.GET_MOVIES:
       return extend(state, {
-        movies: getMoviesByGenre(state.moviesAll, state.activeGenre)
+        movies: getMoviesByGenre(state.moviesAll, action.payload)
       });
   }
 

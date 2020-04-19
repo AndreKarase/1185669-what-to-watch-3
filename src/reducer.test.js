@@ -71,13 +71,41 @@ it(`Reducer should change active genre by a given value`, () => {
   });
 });
 
+it(`Reducer should change active movie by a given value`, () => {
+  expect(reducer({
+    activeMovie: {
+      genre: ``,
+      title: ``,
+      releaseDate: 2000
+    },
+    movies: moviesAll,
+    moviesAll
+  }, {
+    type: ActionType.CHANGE_ACTIVE_MOVIE,
+    payload: {
+      genre: `Drama`,
+      title: `Untitled`,
+      releaseDate: 1999
+    }
+  })).toEqual({
+    activeMovie: {
+      genre: `Drama`,
+      title: `Untitled`,
+      releaseDate: 1999
+    },
+    movies: moviesAll,
+    moviesAll
+  });
+});
+
 it(`Reducer should get movies by a given genre`, () => {
   expect(reducer({
     activeGenre: `Drama`,
     movies: moviesAll,
     moviesAll
   }, {
-    type: ActionType.GET_MOVIES
+    type: ActionType.GET_MOVIES,
+    payload: `Drama`
   })).toEqual({
     activeGenre: `Drama`,
     movies: [{

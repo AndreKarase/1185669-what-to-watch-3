@@ -12,6 +12,23 @@ export default [
     scoresCount: 240,
     director: `Wes Andreson`,
     starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`],
+    runtime: 125,
+    comments: [{
+      user: `Kate Muir`,
+      comment: `Discerning travellers and Wes Anderson fans will luxuriate in the glorious Mittel-European kitsch of one of the director's funniest and most exquisitely designed movies in years.`,
+      date: `2016-12-24`,
+      rating: `8,9`
+    }, {
+      user: `Bill Goodykoontz`,
+      comment: `Anderson's films are too precious for some, but for those of us willing to lose ourselves in them, they're a delight. "The Grand Budapest Hotel" is no different, except that he has added a hint of gravitas to the mix, improving the recipe.`,
+      date: `2015-11-18`,
+      rating: `8,0`
+    }, {
+      user: `Amanda Greever`,
+      comment: `I didn't find it amusing, and while I can appreciate the creativity, it's an hour and 40 minutes I wish I could take back.`,
+      date: `2015-11-18`,
+      rating: `8,0`
+    }]
   }, {
     title: `Fantastic Beasts: The Crimes of Grindelwald`,
     previewImage: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
@@ -25,6 +42,8 @@ export default [
     scoresCount: 240,
     director: `Wes Andreson`,
     starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`],
+    runtime: 125,
+    comments: []
   }, {
     title: `Bohemian Rhapsody`,
     previewImage: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
@@ -38,6 +57,8 @@ export default [
     scoresCount: 240,
     director: `Wes Andreson`,
     starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`],
+    runtime: 125,
+    comments: []
   }, {
     title: `Macbeth`,
     previewImage: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
@@ -51,6 +72,8 @@ export default [
     scoresCount: 240,
     director: `Wes Andreson`,
     starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`],
+    runtime: 125,
+    comments: []
   }, {
     title: `Aviator`,
     previewImage: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
@@ -64,6 +87,8 @@ export default [
     scoresCount: 240,
     director: `Wes Andreson`,
     starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`],
+    runtime: 125,
+    comments: []
   }, {
     title: `We need to talk about Kevin`,
     previewImage: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
@@ -77,6 +102,8 @@ export default [
     scoresCount: 240,
     director: `Wes Andreson`,
     starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`],
+    runtime: 125,
+    comments: []
   }, {
     title: `What We Do in the Shadows`,
     previewImage: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
@@ -90,6 +117,8 @@ export default [
     scoresCount: 240,
     director: `Wes Andreson`,
     starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`],
+    runtime: 125,
+    comments: []
   }, {
     title: `Revenant`,
     previewImage: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
@@ -103,5 +132,7 @@ export default [
     scoresCount: 240,
     director: `Wes Andreson`,
     starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`],
+    runtime: 125,
+    comments: []
   }
 ];
