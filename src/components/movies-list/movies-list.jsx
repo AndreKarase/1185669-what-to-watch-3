@@ -11,16 +11,11 @@ class MoviesList extends PureComponent {
   }
 
   render() {
-    const {maxCount} = this.props;
-    let {movies} = this.props;
-
-    if (maxCount) {
-      movies = movies.slice(0, maxCount);
-    }
+    const {maxCount, movies} = this.props;
 
     return (
       <div className="catalog__movies-list">
-        {movies.map((movie) => (<MovieCard
+        {movies.slice(0, maxCount).map((movie) => (<MovieCard
           key = {movie.title}
           movie = {movie}
           onMouseEnter = {(hoverMovie) => {
@@ -37,11 +32,12 @@ class MoviesList extends PureComponent {
 
 MoviesList.propTypes = {
   movies: PropTypes.array.isRequired,
-  maxCount: PropTypes.number
+  maxCount: PropTypes.number.isRequired
 };
 
 const mapStateToProps = (state) => ({
-  movies: state.movies
+  movies: state.movies,
+  maxCount: state.maxMovieCount
 });
 
 export {MoviesList};

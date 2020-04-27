@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import MoviesList from '../movies-list/movies-list.jsx';
 import GenreList from '../genre-list/genre-list.jsx';
+import ShowMore from '../show-more/show-more.jsx';
 
 const Main = (props) => {
   const {title, genre, releaseDate} = props;
@@ -71,9 +72,7 @@ const Main = (props) => {
 
           <MoviesList/>
 
-          <div className="catalog__more">
-            <button className="catalog__button" type="button">Show more</button>
-          </div>
+          <ShowMore/>
         </section>
 
         <footer className="page-footer">

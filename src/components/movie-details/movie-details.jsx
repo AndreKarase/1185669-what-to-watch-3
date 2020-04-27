@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import Tabs from '../tabs/tabs.jsx';
 import MoviesList from '../movies-list/movies-list.jsx';
 
-const MAX_COUNT = 4;
-
 const MovieDetails = ({movie}) => {
   const {
     title,
@@ -77,9 +75,7 @@ const MovieDetails = ({movie}) => {
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
           <div className="catalog__movies-list">
-            <MoviesList
-              maxCount={MAX_COUNT}
-            />
+            <MoviesList/>
           </div>
         </section>
         <footer className="page-footer">

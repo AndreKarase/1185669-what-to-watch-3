@@ -59,6 +59,7 @@ it(`Reducer without additional parameters should render initial state`, () => {
 it(`Reducer should change active genre by a given value`, () => {
   expect(reducer({
     activeGenre: `All genres`,
+    maxMovieCount: 16,
     movies: moviesAll,
     moviesAll
   }, {
@@ -66,6 +67,7 @@ it(`Reducer should change active genre by a given value`, () => {
     payload: `Drama`
   })).toEqual({
     activeGenre: `Drama`,
+    maxMovieCount: 8,
     movies: moviesAll,
     moviesAll
   });
@@ -93,6 +95,21 @@ it(`Reducer should change active movie by a given value`, () => {
       title: `Untitled`,
       releaseDate: 1999
     },
+    movies: moviesAll,
+    moviesAll
+  });
+});
+
+it(`Reducer should change max movie count by a given value`, () => {
+  expect(reducer({
+    maxMovieCount: 8,
+    movies: moviesAll,
+    moviesAll
+  }, {
+    type: ActionType.SET_MAX_MOVIE_COUNT,
+    payload: 16
+  })).toEqual({
+    maxMovieCount: 16,
     movies: moviesAll,
     moviesAll
   });

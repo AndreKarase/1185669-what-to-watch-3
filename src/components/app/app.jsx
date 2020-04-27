@@ -5,6 +5,9 @@ import {connect} from 'react-redux';
 import Main from '../main/main.jsx';
 import MovieDetails from '../movie-details/movie-details.jsx';
 import movies from '../../mocks/films.js';
+import {ActionCreator} from '../../reducer.js';
+
+const DETAILS_MAX_MOVIE_COUNT = 4;
 
 class App extends PureComponent {
   constructor(props) {
@@ -12,9 +15,11 @@ class App extends PureComponent {
   }
 
   _renderApp() {
-    const {title, genre, releaseDate, activeMovie} = this.props;
+    const {title, genre, releaseDate, activeMovie, onMovieDetailsRender} = this.props;
 
     if (activeMovie) {
+      onMovieDetailsRender();
+
       return (
         <MovieDetails
           movies={movies}
@@ -57,12 +62,19 @@ App.propTypes = {
     title: PropTypes.string.isRequired,
     previewImage: PropTypes.string.isRequired,
     preview: PropTypes.string.isRequired
-  })
+  }),
+  onMovieDetailsRender: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({
   activeMovie: state.activeMovie
 });
 
+const mapDispatchToProps = (dispatch) => ({
+  onMovieDetailsRender() {
+    dispatch(ActionCreator.setMaxMovieCount(DETAILS_MAX_MOVIE_COUNT));
+  }
+});
+
 export {App};
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
