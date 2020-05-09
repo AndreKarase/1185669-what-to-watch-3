@@ -21,6 +21,8 @@ it(`Should render Tabs`, () => {
   const tree = renderer.create(
       <Tabs
         movie = {movie}
+        activeItem={`Overview`}
+        onChangeActiveItem={() => {}}
       />
   ).toJSON();
 

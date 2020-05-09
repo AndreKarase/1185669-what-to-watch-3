@@ -1,29 +1,27 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
 import MovieCard from '../movie-card/movie-card.jsx';
+import withHavingPlayer from '../../hocs/with-having-player/with-having-player.js';
+
+const MovieCardWrapped = withHavingPlayer(MovieCard);
 
 class MoviesList extends PureComponent {
   constructor(props) {
     super(props);
 
-    this.state = {movie: null};
+    this.state = {activeMovie: null};
   }
 
   render() {
-    const {maxCount, movies} = this.props;
+    const {maxCount, movies, onChangeActiveItem} = this.props;
 
     return (
       <div className="catalog__movies-list">
-        {movies.slice(0, maxCount).map((movie) => (<MovieCard
+        {movies.slice(0, maxCount).map((movie) => (<MovieCardWrapped
           key = {movie.title}
           movie = {movie}
-          onMouseEnter = {(hoverMovie) => {
-            this.setState({movie: hoverMovie});
-          }}
-          onMouseLeave = {() => {
-            this.setState({movie: null});
-          }}
+          onMouseEnter = {(hoverMovie) => onChangeActiveItem(hoverMovie)}
+          onMouseLeave = {() => onChangeActiveItem(null)}
         />))}
       </div>
     );
@@ -31,14 +29,10 @@ class MoviesList extends PureComponent {
 }
 
 MoviesList.propTypes = {
+  maxCount: PropTypes.number.isRequired,
   movies: PropTypes.array.isRequired,
-  maxCount: PropTypes.number.isRequired
+  onChangeActiveItem: PropTypes.func
 };
 
-const mapStateToProps = (state) => ({
-  movies: state.movies,
-  maxCount: state.maxMovieCount
-});
 
-export {MoviesList};
-export default connect(mapStateToProps)(MoviesList);
+export default MoviesList;

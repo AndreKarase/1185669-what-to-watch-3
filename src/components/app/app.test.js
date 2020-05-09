@@ -8,7 +8,7 @@ const mockStore = configureStore([]);
 
 const movies = [
   {
-    title: ``,
+    title: `1`,
     previewImage: ``,
     posterImage: ``,
     backgroundImage: ``,
@@ -21,7 +21,7 @@ const movies = [
     director: ``,
     starring: [``, ``, ``],
   }, {
-    title: ``,
+    title: `2`,
     previewImage: ``,
     posterImage: ``,
     backgroundImage: ``,
@@ -34,7 +34,7 @@ const movies = [
     director: ``,
     starring: [``, ``, ``],
   }, {
-    title: ``,
+    title: `3`,
     previewImage: ``,
     posterImage: ``,
     backgroundImage: ``,
@@ -62,6 +62,7 @@ it(`Should render App`, () => {
           title = {`The Grand Budapest Hotel`}
           genre = {`Drama`}
           releaseDate = {`2014`}
+          activeMovie={movies[0]}
         />
       </Provider>
   ).toJSON();

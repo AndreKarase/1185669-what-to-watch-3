@@ -5,45 +5,19 @@ import {ActionCreator} from '../../reducer.js';
 import VideoPlayer from '../video-player/video-player.jsx';
 
 class MovieCard extends PureComponent {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      hasPlayer: false
-    };
-  }
-
   render() {
-    const {onMouseEnter, onMouseLeave, movie, onMovieClick} = this.props;
+    const {onMouseEnter, onMouseLeave, movie, onMovieClick, hasPlayer} = this.props;
     const {title, previewImage, preview} = movie;
-
-    const handleMouseEnter = () => {
-      this._timeout = setTimeout(() => {
-        this.setState({
-          hasPlayer: true
-        });
-      }, 1000);
-
-      onMouseEnter(movie);
-    };
-
-    const handleMouseLeave = () => {
-      clearTimeout(this._timeout);
-      this.setState({
-        hasPlayer: false
-      });
-      onMouseLeave();
-    };
 
     return (
       <article className="small-movie-card catalog__movies-card"
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
         onClick={() => onMovieClick(movie)}
       >
 
         <div className="small-movie-card__image">
-          {this.state.hasPlayer ?
+          {hasPlayer ?
             <VideoPlayer
               src={preview}
               previewImage={previewImage}
@@ -71,7 +45,8 @@ MovieCard.propTypes = {
     title: PropTypes.string.isRequired,
     previewImage: PropTypes.string.isRequired,
     preview: PropTypes.string.isRequired
-  }).isRequired
+  }).isRequired,
+  hasPlayer: PropTypes.bool.isRequired
 };
 
 const mapDispatchToProps = (dispatch) => ({

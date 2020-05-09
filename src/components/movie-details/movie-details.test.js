@@ -71,6 +71,7 @@ it(`Should render MovieDetails`, () => {
       })}>
         <MovieDetails
           movie = {movie}
+          movies={movies}
         />
       </Provider>
   ).toJSON();

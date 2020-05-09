@@ -2,8 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Tabs from '../tabs/tabs.jsx';
 import MoviesList from '../movies-list/movies-list.jsx';
+import withActiveItem from '../../hocs/with-active-item/with-active-item.js';
 
-const MovieDetails = ({movie}) => {
+const TabsWrapped = withActiveItem(Tabs);
+
+const MovieDetails = ({movie, movies}) => {
   const {
     title,
     posterImage,
@@ -64,8 +67,9 @@ const MovieDetails = ({movie}) => {
             <div className="movie-card__poster movie-card__poster--big">
               <img src={posterImage} alt={`${title} poster`} width={218} height={327} />
             </div>
-            <Tabs
+            <TabsWrapped
               movie={movie}
+              activeItem={`Overview`}
             />
           </div>
         </div>
@@ -75,7 +79,10 @@ const MovieDetails = ({movie}) => {
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
           <div className="catalog__movies-list">
-            <MoviesList/>
+            <MoviesList
+              movies={movies}
+              maxCount={4}
+            />
           </div>
         </section>
         <footer className="page-footer">
@@ -96,6 +103,7 @@ const MovieDetails = ({movie}) => {
 };
 
 MovieDetails.propTypes = {
+  movies: PropTypes.array.isRequired,
   movie: PropTypes.shape({
     title: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,

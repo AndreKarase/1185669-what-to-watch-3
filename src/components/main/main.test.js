@@ -62,7 +62,13 @@ it(`Should Main render correctly`, () => {
           title = {`The Grand Budapest Hotel`}
           genre = {`Drama`}
           releaseDate = {`2014`}
-          onHeaderClick = {() => {}}
+          moviesAll={movies}
+          movies={movies}
+          activeGenre={`Drama`}
+          onChangeActiveGenre={() => {}}
+          onShowMoreClick={() => {}}
+          resetMaxMoviesCount={() => {}}
+          maxMoviesCount={8}
         />
       </Provider>
   ).toJSON();

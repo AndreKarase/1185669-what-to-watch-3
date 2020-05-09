@@ -2,7 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
-import {MoviesList} from './movies-list';
+import MoviesList from './movies-list';
 
 const mockStore = configureStore([]);
 
@@ -54,7 +54,8 @@ it(`Should render MoviesList`, () => {
       <Provider store={mockStore({})}>
         <MoviesList
           movies={movies}
-          onHeaderClick={() => {}}
+          onChangeActiveItem={() => {}}
+          maxCount={8}
         />
       </Provider>
   ).toJSON();

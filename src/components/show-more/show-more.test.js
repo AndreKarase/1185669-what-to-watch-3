@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import {ShowMore} from './show-more.jsx';
+import ShowMore from './show-more.jsx';
 
 const movies = [
   {
@@ -48,9 +48,7 @@ const movies = [
 it(`Should render ShowMore`, () => {
   const tree = renderer.create(
       <ShowMore
-        movies = {movies}
-        maxMovieCount = {2}
-        onShowMoreClick = {() => {}}
+        onClick = {() => {}}
       />
   ).toJSON();
 

@@ -9,17 +9,8 @@ const TabNames = {
 };
 
 class Tabs extends PureComponent {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      activeTab: TabNames.OVERVIEW
-    };
-  }
-
   render() {
-    const {movie} = this.props;
-    const {activeTab} = this.state;
+    const {movie, activeItem: activeTab, onChangeActiveItem} = this.props;
     const {rating, scoresCount, description, director, starring, genre, releaseDate, runtime, comments} = movie;
     const ratingLevel = getRatingLevel(rating);
 
@@ -30,7 +21,10 @@ class Tabs extends PureComponent {
             {Object.values(TabNames).map((tab, i) => {
               return (
                 <li key={`tab-name-${i}`} className={`movie-nav__item ${activeTab === tab ? `movie-nav__item--active` : ``}`}
-                  onClick={() => this.setState({activeTab: tab})}
+                  onClick={(evt) => {
+                    evt.preventDefault();
+                    onChangeActiveItem(tab);
+                  }}
                 >
                   <a href="#" className="movie-nav__link">{tab}</a>
                 </li>
@@ -127,7 +121,9 @@ class Tabs extends PureComponent {
 }
 
 Tabs.propTypes = {
-  movie: PropTypes.object.isRequired
+  movie: PropTypes.object.isRequired,
+  activeItem: PropTypes.string.isRequired,
+  onChangeActiveItem: PropTypes.func.isRequired
 };
 
 // Tabs.propTypes = {

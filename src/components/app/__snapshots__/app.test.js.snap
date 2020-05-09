@@ -154,7 +154,7 @@ Array [
         className="catalog__genres-list"
       >
         <li
-          className="catalog__genres-item catalog__genres-item--active"
+          className="catalog__genres-item catalog__genres-item"
         >
           <a
             className="catalog__genres-link"
@@ -200,7 +200,7 @@ Array [
             className="small-movie-card__image"
           >
             <img
-              alt=""
+              alt="1"
               height="175"
               src=""
               width="280"
@@ -211,7 +211,7 @@ Array [
               <a
                 className="small-movie-card__link"
               >
-                
+                1
               </a>
             </h3>
           </div>
@@ -226,7 +226,7 @@ Array [
             className="small-movie-card__image"
           >
             <img
-              alt=""
+              alt="2"
               height="175"
               src=""
               width="280"
@@ -237,7 +237,7 @@ Array [
               <a
                 className="small-movie-card__link"
               >
-                
+                2
               </a>
             </h3>
           </div>
@@ -252,7 +252,7 @@ Array [
             className="small-movie-card__image"
           >
             <img
-              alt=""
+              alt="3"
               height="175"
               src=""
               width="280"
@@ -263,22 +263,11 @@ Array [
               <a
                 className="small-movie-card__link"
               >
-                
+                3
               </a>
             </h3>
           </div>
         </article>
-      </div>
-      <div
-        className="catalog__more"
-      >
-        <button
-          className="catalog__button"
-          onClick={[Function]}
-          type="button"
-        >
-          Show more
-        </button>
       </div>
     </section>
     <footer

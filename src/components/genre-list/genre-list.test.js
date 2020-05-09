@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import {GenreList} from './genre-list.jsx';
+import GenreList from './genre-list.jsx';
 
 const movies = [
   {
@@ -18,9 +18,10 @@ const movies = [
 it(`Should render GenreList`, () => {
   const tree = renderer.create(
       <GenreList
-        moviesAll={movies}
-        activeGenre="All genres"
-        onGenreClick={() => {}}
+        movies={movies}
+        activeItem={`All genres`}
+        onChangeActiveGenre={() => {}}
+        onChangeActiveItem={() => {}}
       />
   ).toJSON();
 

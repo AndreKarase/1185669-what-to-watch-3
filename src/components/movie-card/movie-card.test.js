@@ -23,7 +23,8 @@ it(`Should render MovieCard`, () => {
         movie = {movie}
         onMouseEnter = {() => {}}
         onMouseLeave ={() => {}}
-        onHeaderClick = {() => {}}
+        onMovieClick = {() => {}}
+        hasPlayer={false}
       />
   ).toJSON();
 
