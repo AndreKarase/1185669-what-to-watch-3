@@ -12,7 +12,7 @@ const MoviesListWrapped = withActiveItem(MoviesList);
 
 class Board extends PureComponent {
   render() {
-    const {maxMoviesCount, movies, moviesAll, onChangeActiveGenre, onShowMoreClick/* , resetMaxMoviesCount */} = this.props;
+    const {maxMoviesCount, movies, moviesAll, onChangeActiveGenre, onShowMoreClick, resetMaxMoviesCount} = this.props;
 
     return (
       <Fragment>
@@ -21,7 +21,7 @@ class Board extends PureComponent {
           activeItem={`All movies`}
           onChangeActiveGenre={(genre) => {
             onChangeActiveGenre(genre);
-            // resetMaxMoviesCount();
+            resetMaxMoviesCount();
           }}
         />
         <MoviesListWrapped

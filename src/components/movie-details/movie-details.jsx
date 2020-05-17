@@ -1,12 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
 import Tabs from '../tabs/tabs.jsx';
 import MoviesList from '../movies-list/movies-list.jsx';
 import withActiveItem from '../../hocs/with-active-item/with-active-item.js';
+import {ActionCreator} from '../../reducer.js';
+import {Screen} from '../../const.js';
 
 const TabsWrapped = withActiveItem(Tabs);
 
-const MovieDetails = ({movie, movies}) => {
+const MovieDetails = ({movie, movies, onPlayButtonClick}) => {
   const {
     title,
     posterImage,
@@ -45,7 +48,7 @@ const MovieDetails = ({movie, movies}) => {
                 <span className="movie-card__year">{releaseDate}</span>
               </p>
               <div className="movie-card__buttons">
-                <button className="btn btn--play movie-card__button" type="button">
+                <button className="btn btn--play movie-card__button" type="button" onClick={onPlayButtonClick}>
                   <svg viewBox="0 0 19 19" width={19} height={19}>
                     <use xlinkHref="#play-s" />
                   </svg>
@@ -118,7 +121,15 @@ MovieDetails.propTypes = {
     starring: PropTypes.arrayOf(
         PropTypes.string.isRequired
     ).isRequired
-  }).isRequired
+  }).isRequired,
+  onPlayButtonClick: PropTypes.func.isRequired
 };
 
-export default MovieDetails;
+const mapDispatchToProps = (dispatch) => ({
+  onPlayButtonClick() {
+    dispatch(ActionCreator.setActiveScreen(Screen.PLAYER));
+  }
+});
+
+export {MovieDetails};
+export default connect(null, mapDispatchToProps)(MovieDetails);

@@ -49,6 +49,7 @@ it(`Should render Board`, () => {
           moviesAll={movies}
           onChangeActiveGenre={() => {}}
           onShowMoreClick={() => {}}
+          resetMaxMoviesCount={() => {}}
         />
       </Provider>
   ).toJSON();

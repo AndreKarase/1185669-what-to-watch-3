@@ -3,20 +3,21 @@ import renderer from 'react-test-renderer';
 
 import VideoPlayer from './video-player.jsx';
 
-const mock = {
-  poster: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
-  preview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
-};
 
 it(`Should render VideoPlayer`, () => {
-  const {preview, poster} = mock;
 
   const tree = renderer.create(<VideoPlayer
-    src={preview}
-    poster={poster}
-    isPlaying={true}
-    muted={true}
-  />, {
+    isPreview={false}
+    isLoading={false}
+    title={``}
+    progress={30}
+    timeLeft={``}
+    onFullScreenButtonClick={() => {}}
+    onPlayButtonClick={() => {}}
+    onCloseButtonClick={() => {}}
+  >
+    <video/>
+  </VideoPlayer>, {
     createNodeMock: () => {
       return {};
     }

@@ -21,3 +21,19 @@ export const getRatingLevel = (rating) => {
 export const getMoviesByGenre = (movies, genre) => {
   return genre === `All genres` ? movies : movies.filter((movie) => movie.genre === genre);
 };
+
+export const formatMovieTime = (time) => {
+  const hours = Math.floor(time / 60 / 60);
+  let mimutes = Math.floor(time / 60);
+  let seconds = Math.floor(time % 60);
+
+  if (mimutes < 10) {
+    mimutes = `0` + mimutes;
+  }
+
+  if (seconds < 10) {
+    seconds = `0` + seconds;
+  }
+
+  return `${hours}:${mimutes}:${seconds}`;
+};

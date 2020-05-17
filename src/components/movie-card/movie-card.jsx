@@ -2,7 +2,11 @@ import React, {PureComponent, Fragment} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {ActionCreator} from '../../reducer.js';
-import VideoPlayer from '../video-player/video-player.jsx';
+import Player from '../video-player/video-player.jsx';
+import {Screen} from '../../const.js';
+import withVideo from '../../hocs/with-video/with-video.js';
+
+const VideoPlayer = withVideo(Player);
 
 class MovieCard extends PureComponent {
   render() {
@@ -19,6 +23,7 @@ class MovieCard extends PureComponent {
         <div className="small-movie-card__image">
           {hasPlayer ?
             <VideoPlayer
+              isPreview={true}
               src={preview}
               previewImage={previewImage}
               isPlaying={true}
@@ -51,6 +56,7 @@ MovieCard.propTypes = {
 
 const mapDispatchToProps = (dispatch) => ({
   onMovieClick(movie) {
+    dispatch(ActionCreator.setActiveScreen(Screen.FILM));
     dispatch(ActionCreator.changeActiveMovie(movie));
     dispatch(ActionCreator.getMovies(movie.genre));
   }

@@ -63,6 +63,9 @@ it(`Should render App`, () => {
           genre = {`Drama`}
           releaseDate = {`2014`}
           activeMovie={movies[0]}
+          activeScreen={``}
+          previosScreen={``}
+          setActiveScreen={() => {}}
         />
       </Provider>
   ).toJSON();

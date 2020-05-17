@@ -1,6 +1,9 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
 import Board from '../board/board.jsx';
+import {ActionCreator} from '../../reducer.js';
+import {Screen} from '../../const.js';
 import withMaxMoviesCount from '../../hocs/with-max-movies-count/with-max-movies-count.js';
 
 const BoardWrapped = withMaxMoviesCount(Board);
@@ -8,7 +11,7 @@ const BoardWrapped = withMaxMoviesCount(Board);
 class Main extends PureComponent {
 
   render() {
-    const {title, genre, releaseDate} = this.props;
+    const {title, genre, releaseDate, onPlayButtonClick} = this.props;
 
     return (
       <React.Fragment>
@@ -49,7 +52,8 @@ class Main extends PureComponent {
                 </p>
 
                 <div className="movie-card__buttons">
-                  <button className="btn btn--play movie-card__button" type="button">
+                  <button className="btn btn--play movie-card__button" type="button"
+                    onClick={onPlayButtonClick}>
                     <svg viewBox="0 0 19 19" width="19" height="19">
                       <use xlinkHref="#play-s"></use>
                     </svg>
@@ -71,9 +75,7 @@ class Main extends PureComponent {
           <section className="catalog">
             <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-            <BoardWrapped
-
-            />
+            <BoardWrapped/>
 
           </section>
 
@@ -99,7 +101,15 @@ class Main extends PureComponent {
 Main.propTypes = {
   title: PropTypes.string.isRequired,
   genre: PropTypes.string.isRequired,
-  releaseDate: PropTypes.string.isRequired
+  releaseDate: PropTypes.string.isRequired,
+  onPlayButtonClick: PropTypes.func.isRequired
 };
 
-export default Main;
+const mapDispatchToProps = (dispatch) => ({
+  onPlayButtonClick() {
+    dispatch(ActionCreator.setActiveScreen(Screen.PLAYER));
+  }
+});
+
+export {Main};
+export default connect(null, mapDispatchToProps)(Main);
