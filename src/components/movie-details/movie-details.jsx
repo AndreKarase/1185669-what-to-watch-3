@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import Tabs from '../tabs/tabs.jsx';
 import MoviesList from '../movies-list/movies-list.jsx';
 import withActiveItem from '../../hocs/with-active-item/with-active-item.js';
-import {ActionCreator} from '../../reducer.js';
+import {ActionCreator} from '../../reducer/app/app.js';
 import {Screen} from '../../const.js';
 
 const TabsWrapped = withActiveItem(Tabs);
@@ -14,13 +14,14 @@ const MovieDetails = ({movie, movies, onPlayButtonClick}) => {
     title,
     posterImage,
     backgroundImage,
+    backgroundColor,
     genre,
     releaseDate
   } = movie;
 
   return (
     <React.Fragment>
-      <section className="movie-card movie-card--full">
+      <section className="movie-card movie-card--full" style={{background: backgroundColor}}>
         <div className="movie-card__hero">
           <div className="movie-card__bg">
             <img src={backgroundImage} alt={title} />
@@ -113,6 +114,7 @@ MovieDetails.propTypes = {
     releaseDate: PropTypes.number.isRequired,
     posterImage: PropTypes.string.isRequired,
     backgroundImage: PropTypes.string.isRequired,
+    backgroundColor: PropTypes.string.isRequired,
     preview: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
     rating: PropTypes.number.isRequired,

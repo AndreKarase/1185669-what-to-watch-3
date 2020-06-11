@@ -4,6 +4,11 @@ exports[`Should render MovieDetails 1`] = `
 Array [
   <section
     className="movie-card movie-card--full"
+    style={
+      Object {
+        "background": undefined,
+      }
+    }
   >
     <div
       className="movie-card__hero"

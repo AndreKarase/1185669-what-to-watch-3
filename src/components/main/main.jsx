@@ -2,7 +2,7 @@ import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import Board from '../board/board.jsx';
-import {ActionCreator} from '../../reducer.js';
+import {ActionCreator} from '../../reducer/app/app.js';
 import {Screen} from '../../const.js';
 import withMaxMoviesCount from '../../hocs/with-max-movies-count/with-max-movies-count.js';
 

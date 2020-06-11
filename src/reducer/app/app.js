@@ -1,15 +1,12 @@
-import moviesAll from './mocks/films.js';
-import {extend, getMoviesByGenre} from './utils.js';
-import {Screen} from './const.js';
+import {extend} from '../../utils.js';
+import {Screen} from '../../const.js';
 
 
 const initialState = {
   activeScreen: Screen.MAIN,
   previosScreen: null,
   activeGenre: `All genres`,
-  activeMovie: null,
-  movies: moviesAll,
-  moviesAll
+  activeMovie: null
 };
 
 const ActionType = {
@@ -33,11 +30,6 @@ const ActionCreator = {
   setActiveScreen: (screen) => ({
     type: ActionType.SET_ACTIVE_SCREEN,
     payload: screen
-  }),
-
-  getMovies: (genre) => ({
-    type: ActionType.GET_MOVIES,
-    payload: genre
   })
 };
 
@@ -55,11 +47,6 @@ const reducer = (state = initialState, action) => {
       return extend(state, {
         activeScreen: action.payload,
         previosScreen: state.activeScreen
-      });
-
-    case ActionType.GET_MOVIES:
-      return extend(state, {
-        movies: getMoviesByGenre(state.moviesAll, action.payload)
       });
   }
 

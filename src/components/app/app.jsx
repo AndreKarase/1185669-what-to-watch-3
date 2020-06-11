@@ -4,13 +4,16 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import {connect} from 'react-redux';
 import Main from '../main/main.jsx';
 import MovieDetails from '../movie-details/movie-details.jsx';
-import movies from '../../mocks/films.js';
 import Player from '../video-player/video-player.jsx';
-import {ActionCreator} from '../../reducer.js';
+import {ActionCreator} from '../../reducer/app/app.js';
+import {getActiveMovie, getActiveScreen, getPreviosScreen} from '../../reducer/app/selectors.js';
+import {getMoviesAll} from '../../reducer/data/selectors.js';
 import {Screen} from '../../const.js';
 import withVideo from '../../hocs/with-video/with-video.js';
 
 const VideoPlayer = withVideo(Player);
+
+const movies = [];
 
 class App extends PureComponent {
   _renderApp() {
@@ -35,11 +38,13 @@ class App extends PureComponent {
         );
 
       case Screen.PLAYER:
+        const {title: activeTitle, posterImage, video} = activeMovie;
+
         return (
           <VideoPlayer
-            src={`https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`}
-            title={`Transpotting`}
-            poster={`img/fantastic-beasts-the-crimes-of-grindelwald.jpg`}
+            src={video}
+            title={activeTitle}
+            poster={posterImage}
             isPlaying={true}
             isPreview={false}
             muted={false}
@@ -78,18 +83,20 @@ App.propTypes = {
   activeMovie: PropTypes.shape({
     title: PropTypes.string.isRequired,
     previewImage: PropTypes.string.isRequired,
+    posterImage: PropTypes.string.isRequired,
+    video: PropTypes.string.isRequired,
     preview: PropTypes.string.isRequired
   }),
   activeScreen: PropTypes.string.isRequired,
-  previosScreen: PropTypes.string.isRequired,
+  previosScreen: PropTypes.string,
   setActiveScreen: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({
-  activeScreen: state.activeScreen,
-  previosScreen: state.previosScreen,
-  activeMovie: state.activeMovie,
-  moviesAll: state.moviesAll
+  activeScreen: getActiveScreen(state),
+  previosScreen: getPreviosScreen(state),
+  activeMovie: getActiveMovie(state),
+  moviesAll: getMoviesAll(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({

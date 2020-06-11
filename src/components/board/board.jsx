@@ -1,10 +1,12 @@
 import React, {PureComponent, Fragment} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {ActionCreator} from '../../reducer.js';
 import MoviesList from '../movies-list/movies-list.jsx';
 import GenreList from '../genre-list/genre-list.jsx';
 import ShowMore from '../show-more/show-more.jsx';
+import {ActionCreator} from '../../reducer/app/app.js';
+import {getMovies, getMoviesAll} from '../../reducer/data/selectors.js';
+import {getActiveGenre} from '../../reducer/app/selectors.js';
 import withActiveItem from '../../hocs/with-active-item/with-active-item.js';
 
 const GenreListWrapped = withActiveItem(GenreList);
@@ -12,7 +14,7 @@ const MoviesListWrapped = withActiveItem(MoviesList);
 
 class Board extends PureComponent {
   render() {
-    const {maxMoviesCount, movies, moviesAll, onChangeActiveGenre, onShowMoreClick, resetMaxMoviesCount} = this.props;
+    const {maxMoviesCount, moviesAll, movies, onChangeActiveGenre, onShowMoreClick, resetMaxMoviesCount} = this.props;
 
     return (
       <Fragment>
@@ -49,15 +51,14 @@ Board.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  moviesAll: state.moviesAll,
-  movies: state.movies,
-  activeGenre: state.activeGenre
+  moviesAll: getMoviesAll(state),
+  movies: getMovies(state),
+  activeGenre: getActiveGenre(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({
   onChangeActiveGenre(genre) {
     dispatch(ActionCreator.changeActiveGenre(genre));
-    dispatch(ActionCreator.getMovies(genre));
   }
 });
 
