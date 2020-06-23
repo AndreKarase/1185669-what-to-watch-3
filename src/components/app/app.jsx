@@ -5,9 +5,11 @@ import {connect} from 'react-redux';
 import Main from '../main/main.jsx';
 import MovieDetails from '../movie-details/movie-details.jsx';
 import Player from '../video-player/video-player.jsx';
+import SignIn from '../sign-in/sign-in.jsx';
 import {ActionCreator} from '../../reducer/app/app.js';
 import {getActiveMovie, getActiveScreen, getPreviosScreen} from '../../reducer/app/selectors.js';
 import {getMoviesAll} from '../../reducer/data/selectors.js';
+import {Operation as UserOperation} from '../../reducer/user/user.js';
 import {Screen} from '../../const.js';
 import withVideo from '../../hocs/with-video/with-video.js';
 
@@ -17,7 +19,7 @@ const movies = [];
 
 class App extends PureComponent {
   _renderApp() {
-    const {title, genre, releaseDate, activeMovie, activeScreen, previosScreen, setActiveScreen} = this.props;
+    const {title, genre, releaseDate, activeMovie, activeScreen, previosScreen, setActiveScreen, login} = this.props;
 
     switch (activeScreen) {
       case Screen.FILM:
@@ -49,6 +51,16 @@ class App extends PureComponent {
             isPreview={false}
             muted={false}
             onCloseButtonClick={() => setActiveScreen(previosScreen)}
+          />
+        );
+
+      case Screen.SIGN_IN:
+        return (
+          <SignIn
+            onSubmit={(authInfo) => {
+              login(authInfo);
+              setActiveScreen(previosScreen);
+            }}
           />
         );
     }
@@ -89,7 +101,8 @@ App.propTypes = {
   }),
   activeScreen: PropTypes.string.isRequired,
   previosScreen: PropTypes.string,
-  setActiveScreen: PropTypes.func.isRequired
+  setActiveScreen: PropTypes.func.isRequired,
+  login: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({
@@ -102,6 +115,10 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   setActiveScreen(screen) {
     dispatch(ActionCreator.setActiveScreen(screen));
+  },
+
+  login(authData) {
+    dispatch(UserOperation.login(authData));
   }
 });
 

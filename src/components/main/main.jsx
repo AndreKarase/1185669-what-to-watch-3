@@ -3,15 +3,19 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import Board from '../board/board.jsx';
 import {ActionCreator} from '../../reducer/app/app.js';
+import {AuthorizationStatus} from '../../reducer/user/user.js';
 import {Screen} from '../../const.js';
+import {getAuthorizationStatus, getAuthInfo} from '../../reducer/user/selectors.js';
 import withMaxMoviesCount from '../../hocs/with-max-movies-count/with-max-movies-count.js';
 
 const BoardWrapped = withMaxMoviesCount(Board);
 
+const URL = `https://htmlacademy-react-3.appspot.com`;
+
 class Main extends PureComponent {
 
   render() {
-    const {title, genre, releaseDate, onPlayButtonClick} = this.props;
+    const {title, genre, releaseDate, onPlayButtonClick, authorizationStatus, authInfo, onSignInButtonClick} = this.props;
 
     return (
       <React.Fragment>
@@ -32,9 +36,15 @@ class Main extends PureComponent {
             </div>
 
             <div className="user-block">
-              <div className="user-block__avatar">
-                <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
-              </div>
+
+              {/*authorizationStatus === AuthorizationStatus.AUTH*/authInfo ?
+                <div className="user-block__avatar">
+                  <img src={URL + authInfo[`avatar_url`]} alt="User avatar" width="63" height="63" />
+                </div>
+                :
+                <a className="user-block__link" onClick={onSignInButtonClick}>Sign in</a>
+              }
+
             </div>
           </header>
 
@@ -102,14 +112,25 @@ Main.propTypes = {
   title: PropTypes.string.isRequired,
   genre: PropTypes.string.isRequired,
   releaseDate: PropTypes.string.isRequired,
-  onPlayButtonClick: PropTypes.func.isRequired
+  onPlayButtonClick: PropTypes.func.isRequired,
+  onSignInButtonClick: PropTypes.func.isRequired,
+  authorizationStatus: PropTypes.string.isRequired,
+  authInfo: PropTypes.object
 };
+
+const mapStateToProps = (state) => ({
+  authorizationStatus: getAuthorizationStatus(state),
+  authInfo: getAuthInfo(state)
+});
 
 const mapDispatchToProps = (dispatch) => ({
   onPlayButtonClick() {
     dispatch(ActionCreator.setActiveScreen(Screen.PLAYER));
+  },
+  onSignInButtonClick() {
+    dispatch(ActionCreator.setActiveScreen(Screen.SIGN_IN));
   }
 });
 
 export {Main};
-export default connect(null, mapDispatchToProps)(Main);
+export default connect(mapStateToProps, mapDispatchToProps)(Main);
